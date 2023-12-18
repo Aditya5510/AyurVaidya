@@ -62,7 +62,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     },
 }));
 
-export default function ResultModel({ finalData, raw, name, isDarawer, text, mom }) {
+export default function ResultModel({ finalData, raw, name, isDarawer, text, mom, Age, Severity, Gender, Symptoms }) {
     const [open, setOpen] = React.useState(false);
     const { setLoading1, setUserHistoryData, setTreatmentsData, setx, x, disease, setDisease, setFormDataModel, FormDataModel } = useContext(formResponseData);
 
@@ -87,7 +87,7 @@ export default function ResultModel({ finalData, raw, name, isDarawer, text, mom
             raw['Disease'] = name;
             const res = await sendFormServer(raw, isLoggedIn());
             if (res.success === "true") {
-                // console.log(res)
+                console.log(res)
                 setx((x) => !x)
                 // handleClose()
 
@@ -144,6 +144,12 @@ export default function ResultModel({ finalData, raw, name, isDarawer, text, mom
                     <FaRegWindowClose />
                 </IconButton>
                 <DialogContent dividers sx={{ backgroundColor: "#F5F5DC" }}>
+                    <Stack>
+                        <Typography sx={{ fontWeight: "bold", fontSize: "20px", }}>Age: {Age}</Typography>
+                        <Typography sx={{ fontWeight: "bold", fontSize: "20px", }}> Gender:{Gender}</Typography>
+                        <Typography sx={{ fontWeight: "bold", fontSize: "20px", }}> Severity:{Severity}</Typography>
+                        <Typography sx={{ fontWeight: "bold", fontSize: "20px", }}> Symptoms:{Symptoms?.join()}</Typography>
+                    </Stack>
                     <Box><Stack>
                         <Typography sx={{ fontWeight: "bold", fontSize: "20px", color: "secondary.main" }}>Description</Typography>
                         <Typography sx={{ borderBottom: 1, borderColor: "ActiveBorder" }}> {finalData?.description}</Typography>
@@ -151,11 +157,10 @@ export default function ResultModel({ finalData, raw, name, isDarawer, text, mom
                         <Stack>
                             <Typography sx={{ fontWeight: "bold", fontSize: "20px", color: "secondary.main" }}>Doshic Imbalance</Typography>
                             <Typography sx={{ borderColor: "ActiveBorder" }}><strong>Primary:</strong> {finalData?.doshic_imbalance?.primary}</Typography>
-                            <Typography sx={{ borderBottom: 1, borderColor: "ActiveBorder" }}><strong>Secondary:</strong> {finalData?.doshic_imbalance?.secondary?.map((item) => {
-                                return <>
-                                    <Typography>{item}</Typography>
-                                </>
-                            })}</Typography>
+                            <Typography sx={{ borderBottom: 1, borderColor: "ActiveBorder" }}><strong>Secondary:</strong> {finalData?.doshic_imbalance?.secondary.join()
+
+                            }
+                            </Typography>
                         </Stack>
                         <Stack>
                             {finalData?.warning === undefined ? <><Stack>
@@ -180,7 +185,7 @@ export default function ResultModel({ finalData, raw, name, isDarawer, text, mom
                 <DialogActions sx={{ display: "flex", gap: "0.5rem" }}>
 
 
-                    <PDFDownloadLink document={<Documents />} fileName='somename.pdf' style={{ textDecoration: 'none' }}>
+                    <PDFDownloadLink document={<Documents finalData={finalData} />} fileName='somename.pdf' style={{ textDecoration: 'none' }}>
                         {({ loading }) => (loading ? 'Loading document...' : <Button autoFocus variant='outlined' disabled={!raw}>
                             Download
                         </Button>)}

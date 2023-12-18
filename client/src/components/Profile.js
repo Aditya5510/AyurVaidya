@@ -17,6 +17,7 @@ import Loading from "./Loading";
 import UserAvatar from "./UserAvatar";
 import HorizontalStack from "./util/HorizontalStack";
 
+
 const Profile = (props) => {
   const [user, setUser] = useState(null);
   const currentUser = isLoggedIn();
@@ -34,7 +35,15 @@ const Profile = (props) => {
       {user ? (
         <Stack alignItems="center" spacing={2}>
           <Box my={1}>
-            <UserAvatar width={150} height={150} username={user.username} userProfile={user.profile} />
+
+            <Avatar
+              sx={{
+                height: 150,
+                width: 150,
+                backgroundColor: "lightgray",
+              }}
+              src={user.profile}
+            />
           </Box>
 
           <Typography variant="h5">{user.username}</Typography>

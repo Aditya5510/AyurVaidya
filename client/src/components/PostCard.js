@@ -138,6 +138,7 @@ const PostCard = (props) => {
                 createdAt={post.createdAt}
                 Profile={post.poster.profile}
                 edited={post.edited}
+                exper={post.poster.isExpert}
                 preview={preview === "secondary"}
               />
               <Box>

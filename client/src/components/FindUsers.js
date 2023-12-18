@@ -63,7 +63,7 @@ const FindUsers = () => {
         ) : (
           users &&
           users.map((user) => (
-            <UserEntry username={user.username} key={user.username} userprofile={user.profile} />
+            <UserEntry username={user.username} key={user.username} userprofile={user.profile} exper={user?.isAdmin} />
 
           ))
         )}

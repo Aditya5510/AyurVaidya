@@ -35,7 +35,7 @@ const MobileProfile = (props) => {
         <Stack spacing={2}>
           <HorizontalStack spacing={2} justifyContent="space-between">
             <HorizontalStack>
-              <UserAvatar width={50} height={50} username={user.username} userProfile={user.profile} />
+              <UserAvatar width={40} height={40} username={user.username} userProfile={user.profile} expert={currentUser.isAdmin} />
               <Typography variant="h6" textOverflow="ellipses">
                 {user.username}
               </Typography>
