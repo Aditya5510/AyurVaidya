@@ -10,6 +10,9 @@ import searchIcon from "../../Images/searchIcons.jpg"
 import question from "../../Images/question.png"
 import ml from "../../Images/machine-learning-colorful-round-vector-line-illustration-dark-background_104589-1784-removebg-preview.png"
 import { Grid } from "@mui/material";
+import { useTranslation } from "react-i18next";
+
+
 
 
 const featureData = [
@@ -115,6 +118,9 @@ const img =
 
 const LandingView = () => {
     const navigate = useNavigate();
+
+
+    const { t, i18n } = useTranslation()
 
     return (
         <Container>
