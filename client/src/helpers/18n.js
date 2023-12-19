@@ -1,5 +1,7 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
+import hnTransaltion from '../locale/hn/Translation.json'
+import enTransaltion from '../locale/en/Translation.json'
 
 // the translations
 // (tip move them in a JSON file and import them,
