@@ -13,6 +13,7 @@ const getUserDict = (token, user) => {
     userId: user._id,
     isAdmin: user.isAdmin,
     profile: user.profile,
+    isExpert: user.isExpert,
   };
 };
 
@@ -81,7 +82,7 @@ const login = async (req, res) => {
     }
 
     const token = jwt.sign(buildToken(user), process.env.TOKEN_KEY);
-    console.log(user)
+    // console.log(user)
     return res.json(getUserDict(token, user));
   } catch (err) {
     console.log(err);
