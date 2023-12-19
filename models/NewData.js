@@ -14,6 +14,8 @@ const formulationSchema = new mongoose.Schema({
 });
 
 const diseaseSchema = new mongoose.Schema({
+    language_name: { type: String, required: true },
+    Lang: { type: String, required: true },
     modern_name: { type: String, required: true },
     ayurvedic_names: [{ type: String }],
     doshic_imbalance: {

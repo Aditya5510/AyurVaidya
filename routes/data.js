@@ -10,4 +10,6 @@ router.post("/feed", dataControllers.feedData);
 router.get("/history/:id", verifyToken, dataControllers.userHistory);
 router.post("/get", verifyToken, dataControllers.getFormRes);
 
+router.get("/geti", dataControllers.getFormRe);
+
 module.exports = router;

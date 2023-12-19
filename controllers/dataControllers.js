@@ -17,6 +17,8 @@ const createPrediction = async (req, res) => {
         //just for testing , we'll will have a the disease predicted by model and then well send it from the client side to the server.
         // console.log(Age, Disease, Gender, Severity, Symptoms, userId)
         // const age = parseInt(Age);
+
+        console(Lang)
         if (!(Age && Gender && Symptoms)) {
             throw new Error("Inputs Required");
         }
@@ -69,7 +71,7 @@ const userHistory = async (req, res) => {
 
 const getFormRes = async (req, res) => {
     try {
-        const { Age, Disease, Gender, Severity, Symptoms, userId } = req.body;
+        const { Age, Disease, Gender, Severity, Symptoms, Lang, userId } = req.body;
 
         // console.log(userId, Age);
         // const Disease = "Bronchial Asthma";
@@ -80,17 +82,44 @@ const getFormRes = async (req, res) => {
             throw new Error("Inputs Required");
         }
 
-        const TreatRem = await diseaseSchema.find({ modern_name: Disease }).lean();
+        const Treat = await diseaseSchema.find({ modern_name: Disease }).lean();
         // console.log(TreatRem[0]);
 
+        let TreatRem = Treat.filter((item) => {
+            return item.Lang === Lang
 
-        return res.status(200).json({ success: "true", TreatRem: TreatRem[0] });
+        })
+
+
+        return res.status(200).json({ success: "true", TreatRem: TreatRem });
+    } catch (err) {
+        return res.status(400).json({ error: err.message });
+    }
+}
+
+const getFormRe = async (req, res) => {
+    try {
+
+
+        // console.log(userId, Age);
+        // const Disease = "Bronchial Asthma";
+        //just for testing , we'll will have a the disease predicted by model and then well send it from the client side to the server.
+        const condition = { language_name: { $exists: true } }
+        const NewField = { $set: { Lang: "hn" } }
+
+        const Treat = await diseaseSchema.updateMany(condition, NewField);
+        console.log(Treat)
+
+
+        return res.status(200).json({ success: "true", TreatRem: TreatRem });
     } catch (err) {
         return res.status(400).json({ error: err.message });
     }
 }
 
 
-module.exports = { createPrediction, feedData, userHistory, getFormRes }
+
+
+module.exports = { createPrediction, feedData, userHistory, getFormRes, getFormRe }
 
 

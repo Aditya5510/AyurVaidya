@@ -57,8 +57,7 @@ const Form = () => {
                 // setTreatmentsData(newData);
                 setLoading1(false);
                 setDisease(newData)
-
-                console.log(newData)
+                // console.log(newData)
                 // console.log(disease)
                 // console.log(newData)
                 setFormDataModel(FormData)
