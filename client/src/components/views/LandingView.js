@@ -171,7 +171,7 @@ const LandingView = () => {
                                 },
                             }}
                         >
-                            <strong style={{ color: "#F5F5DC" }}>Predict</strong>{" "}
+                            <strong style={{ color: "#F5F5DC" }}>{t('predict')}</strong>{" "}
                             <strong style={{ color: "#F5F5DC" }}>Connect</strong>{" "}
                             <strong> Recognize</strong>
                         </Typography>
