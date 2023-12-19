@@ -32,6 +32,7 @@ import { FaSearch } from "react-icons/fa";
 import { FaQuestionCircle } from "react-icons/fa";
 import { MdOutlineBatchPrediction } from "react-icons/md";
 import { RiVoiceRecognitionLine } from "react-icons/ri";
+import ConfirmationDialog from "./language_diague_box";
 
 
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -174,6 +175,7 @@ const Navbar = () => {
 
 
             <>
+              <ConfirmationDialog />
               <IconButton sx={{ color: "#0EA220" }} onClick={() => navigate("/")}>
                 <  AiFillHome />
               </IconButton>
@@ -186,8 +188,6 @@ const Navbar = () => {
               <IconButton sx={{ color: "#0EA220" }} component={Link} to={"/imagerecogntion"}>
                 < RiVoiceRecognitionLine />
               </IconButton>
-
-
               <Box sx={{ flexGrow: 0 }}>
                 <Tooltip title="Open settings">
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -228,6 +228,11 @@ const Navbar = () => {
                       },
                     }}>Logout</Button>
                   </MenuItem>
+
+
+
+
+
 
                 </Menu>
 

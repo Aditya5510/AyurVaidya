@@ -67,7 +67,7 @@ export default function ResultModel({ finalData, raw, name, isDarawer, text, mom
     const { setLoading1, setUserHistoryData, setTreatmentsData, setx, x, disease, setDisease, setFormDataModel, FormDataModel } = useContext(formResponseData);
 
 
-    // console.log(data)
+    // console.log(finalData);
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -83,7 +83,7 @@ export default function ResultModel({ finalData, raw, name, isDarawer, text, mom
     const handleData = async () => {
         try {
 
-            // console.log(raw);
+            console.log(raw);
             raw['Disease'] = name;
             const res = await sendFormServer(raw, isLoggedIn());
             if (res.success === "true") {

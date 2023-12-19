@@ -9,9 +9,11 @@ import { useContext } from "react";
 import { formResponseData } from "./views/Home";
 import { getFormServer } from "../api/Data";
 import { isLoggedIn } from "../helpers/authHelper";
+import { useTranslation } from "react-i18next";
 
 const Card = ({ name, chance, data1, Age, severity, Gender, Symptoms }) => {
   // const handleSubmit = () => { };
+
   const {
     setLoading1,
     setUserHistoryData,
@@ -22,20 +24,26 @@ const Card = ({ name, chance, data1, Age, severity, Gender, Symptoms }) => {
     setDisease,
     setFormDataModel,
     FormDataModel,
+
   } = useContext(formResponseData);
   const [Formulation, setFormulation] = React.useState({});
-
+  const { t, i18n } = useTranslation();
   React.useEffect(() => {
     const fetch = async () => {
       try {
         data1["Disease"] = name;
-        // console.log(data);
+        data1["Lang"] = localStorage.getItem("lang");
+        // console.log(data1);
+
+        // console.log(i18n.language);
         const res = await getFormServer(data1, isLoggedIn());
         if (res.success === "true") {
           // console.log(res)
           setFormulation(res.TreatRem);
           // handleClose()
+          console.log(res.TreatRem)
           delete data1.Disease;
+          delete data1.Lang;
         }
       } catch (e) {
         console.log(e);
@@ -43,7 +51,7 @@ const Card = ({ name, chance, data1, Age, severity, Gender, Symptoms }) => {
     };
 
     fetch();
-  }, []);
+  }, [i18n.language]);
 
   return (
     <Container
@@ -73,7 +81,7 @@ const Card = ({ name, chance, data1, Age, severity, Gender, Symptoms }) => {
         },
       }}
     >
-      <ResultModel finalData={Formulation} raw={data1} name={name} Age={Age} Severity={severity} Gender={Gender} Symptoms={Symptoms} />
+      <ResultModel finalData={Formulation[0]} raw={data1} name={name} Age={Age} Severity={severity} Gender={Gender} Symptoms={Symptoms} />
       <Box>
         <Box
           sx={{

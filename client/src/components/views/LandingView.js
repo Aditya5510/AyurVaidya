@@ -61,7 +61,7 @@ const Features = ({ labela, imgg, bag, col, routes }) => {
                             boxShadow: "0px 10px 10px rgba(0, 0, 0.1, 0.1)",
 
                         }
-                    }}>{t('seeDetails')}</Button>
+                    }}>{t("seeDetails")}</Button>
                 </Box>
 
             </Box>
@@ -124,6 +124,9 @@ const LandingView = () => {
 
     const { t, i18n } = useTranslation()
 
+    // console.log(t('predict'));
+
+    // console.log(i18n.language)
     return (
         <Container>
             <Navbar />
@@ -175,7 +178,7 @@ const LandingView = () => {
                         >
                             <strong style={{ color: "#F5F5DC" }}>{t('predict')}</strong>{" "}
                             <strong style={{ color: "#F5F5DC" }}>Connect</strong>{" "}
-                            <strong> Recognize</strong>
+                            <strong>{t('Recognize')}</strong>
                         </Typography>
                         <Typography
                             className="content"
@@ -280,17 +283,11 @@ const LandingView = () => {
                     <Box className="featureBox" sx={{ height: "auto" }}>
                         {
                             [0, 1, 2].map((i) => {
-                                console.log(i);
+                                // console.log(i);
                                 < Features bag={featureData[i].bg} col={featureData[i].colo} imgg={featureData[i].img} labela={featureData[i].label} routes={featureData[i].rout} />
                             })
                         }
                     </Box>
-
-
-
-
-
-
 
                 </Box>
 

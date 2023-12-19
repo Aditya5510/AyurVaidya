@@ -18,15 +18,13 @@ const HomeHistory = ({ data }) => {
 
     const { historyResponse } = useContext(formResponseData);
 
-    // console.log(historyResponse)
+    console.log(historyResponse)
 
 
     return (
         <Box style={{
             height: "80vh", backgroundColor: "#F5F5DC", overflowY: "scroll", overflowX: "hidden", borderRight: 1, borderColor: "divider"
         }}>
-
-
 
             <List sx={{ backgroundColor: "#F5F5DC", height: "80vh", justifyContent: "center", display: data.length ? "" : "flex", alignItems: "center" }} >
                 {data.length === 0 && <Typography sx={{ color: "black", fontSize: "20px", }}>No History</Typography>}
