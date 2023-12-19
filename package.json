@@ -24,6 +24,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.3.2",
     "nodemon": "^2.0.16",
+    "react-i18next": "^13.5.0",
     "react-material-ui-carousel": "^3.4.2",
     "react-slick": "^0.29.0",
     "slick-carousel": "^1.8.1",
