@@ -67,7 +67,7 @@ const Comment = (props) => {
   if (depth % 2 === 1) {
     style.backgroundColor = "white";
   }
-  // console.log(comment)
+  console.log(comment)
 
   return (
     <Box sx={style}>
@@ -99,6 +99,7 @@ const Comment = (props) => {
                 createdAt={comment.createdAt}
                 edited={comment.edited}
                 Profile={comment.commenter.profile}
+                expert={comment.commenter.isExpert}
               />
 
               <IconButton

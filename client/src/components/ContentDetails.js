@@ -5,11 +5,11 @@ import Moment from "react-moment";
 import UserAvatar from "./UserAvatar";
 import { Link } from "react-router-dom";
 
-const ContentDetails = ({ username, createdAt, edited, preview, Profile }) => {
+const ContentDetails = ({ username, createdAt, edited, preview, Profile, exper }) => {
   // console.log(Profile);
   return (
     <HorizontalStack sx={{}}>
-      <UserAvatar width={30} height={30} username={username} userProfile={Profile} />
+      <UserAvatar width={30} height={30} username={username} userProfile={Profile} expert={exper} />
       <Typography variant="subtitle2" color="text.secondary" gutterBottom>
         <Link
           color="inherit"

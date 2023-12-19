@@ -28,6 +28,8 @@ const PostEditor = () => {
   const [errors, setErrors] = useState({});
   const user = isLoggedIn();
 
+
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
     const errors = validate();
@@ -58,7 +60,7 @@ const PostEditor = () => {
       <Stack spacing={1}>
         {user && (
           <HorizontalStack spacing={2}>
-            <UserAvatar width={50} height={50} username={user.username} userProfile={user.profile} />
+            <UserAvatar width={50} height={50} username={user.username} userProfile={user.profile} expert={user.isAdmin} />
             <Typography variant="h5">
               What would you like to post today {user.username}?
             </Typography>
