@@ -56,8 +56,9 @@ function Language_dialogue_Box(props) {
 
     const changeLanguageHandler = (e) => {
         console.log(e);
+       
         i18n.changeLanguage(e);
-
+        localStorage.setItem("Lang")
         // console.log(languageValue);
     };
 

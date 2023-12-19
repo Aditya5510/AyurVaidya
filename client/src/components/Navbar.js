@@ -33,6 +33,7 @@ import { FaQuestionCircle } from "react-icons/fa";
 import { MdOutlineBatchPrediction } from "react-icons/md";
 import { RiVoiceRecognitionLine } from "react-icons/ri";
 import ConfirmationDialog from "./language_diague_box";
+import { useTranslation } from "react-i18next";
 
 
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -98,7 +99,7 @@ const Navbar = () => {
   const handleSearchIcon = (e) => {
     setSearchIcon(!searchIcon);
   };
-
+  const {t} = useTranslation();
   return (
     <Stack mb={2}>
       <Stack
@@ -127,11 +128,10 @@ const Navbar = () => {
             sx={{ display: mobile ? "none" : "block", fontWeight: "bold", mb: "5px" }}
             variant={navbarWidth ? "h6" : "h5"}
             mr={1}
-
             color={"#0EA220 "}
           >
             {/* <Link to="/" color="inherit"> */}
-            AyurVaidya
+            {t("AyurVaidya")}
             {/* </Link> */}
           </Typography>
         </HorizontalStack>

@@ -13,6 +13,8 @@ import { isLoggedIn } from "../../helpers/authHelper";
 import { fetchUserHistoryData } from "../../api/Data";
 import PredictionResults from "../PredictionResults";
 import Loading from "../Loading";
+import { useTransition } from "react";
+import { useTranslation } from "react-i18next";
 
 export const formResponseData = createContext();
 
@@ -65,13 +67,14 @@ const Home = () => {
     setx(x + 1);
     return () => window.removeEventListener("resize", updateDimensions);
   }, []);
-
+  
   const updateDimensions = () => {
     const width = window.innerWidth;
     setWindowWidth(width);
   };
-
+  const {t} = useTranslation();
   return (
+    
     <formResponseData.Provider
       value={{
         setLoading1,
@@ -135,7 +138,7 @@ const Home = () => {
                             color: "black",
                           }}
                         />
-                        <Typography sx={{ color: "black" }}>History</Typography>
+                        <Typography sx={{ color: "black" }}>{t("History")}+</Typography>
                       </Typography>
                     </Box>
                     <HomeHistory data={userHistoryData} />
@@ -188,7 +191,7 @@ const Home = () => {
                               color: "#168423",
                             }}
                           >
-                            Fill the Details!
+                            {t("Fill the Details!")}
                           </Typography>
                         </Box>
                         <Box
@@ -272,7 +275,7 @@ const Home = () => {
                           mt: "20px",
                         }}
                       >
-                        Please select your symptoms!
+                        {t("Please select your symptoms!")}
                       </Typography>
                       <Box
                         sx={{

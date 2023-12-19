@@ -14,6 +14,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { login } from "../../api/users";
 import ErrorAlert from "../ErrorAlert";
 import { loginUser } from "../../helpers/authHelper";
+import { useTranslation } from "react-i18next";
 
 
 const LoginView = () => {
@@ -41,7 +42,7 @@ const LoginView = () => {
       navigate("/");
     }
   };
-
+  const {t} = useTranslation();
   return (
     <Container sx={{ mt: { xs: 2, md: 6 }, backgroundColor: "#BCD9B6", padding: "9px", borderRadius: "10px", boxShadow: "5px 20px 50px 0px rgba(0,0,0,0.5)", maxWidth: { lg: "30vw", md: "40vw", sm: "80vw", xs: "90vw" } }}>
       <Stack alignItems="center">
@@ -55,7 +56,7 @@ const LoginView = () => {
           </Link>
         </Typography>
         <Typography variant="h5" gutterBottom>
-          Login
+          {t("Login")}
         </Typography>
 
         <Box component="form" onSubmit={handleSubmit}>
@@ -83,11 +84,11 @@ const LoginView = () => {
 
           <ErrorAlert error={serverError} />
           <Button type="submit" fullWidth variant="contained" sx={{ my: 2, ":hover": { filter: 'brightness(0.6)' }, backgroundColor: "secondary.main" }}>
-            Login
+          {t("Login")}
           </Button>
         </Box>
         <Typography color="text.secondary">
-          Don't have an account yet? <Link to="/signup">Sign Up</Link>
+          {t("Don't have an account yet?")} <Link to="/signup">{t("Sign up")}</Link>
         </Typography>
       </Stack>
     </Container >

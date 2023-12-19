@@ -19,6 +19,7 @@ import { isLength, isEmail, contains } from "validator";
 import axios from "axios";
 import { Link } from "react-router-dom"
 import { grey } from "@mui/material/colors";
+import { useTranslation } from "react-i18next";
 
 const SignupView = () => {
   const navigate = useNavigate();
@@ -59,8 +60,6 @@ const SignupView = () => {
       console.error(error);
     }
   }
-
-
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -106,7 +105,7 @@ const SignupView = () => {
 
     return errors;
   };
-
+  const {t} = useTranslation();
   return (
     <Container sx={{ mt: { xs: 2, md: 6 }, backgroundColor: "#BCD9B6", padding: "10px", borderRadius: "10px", boxShadow: "5px 20px 50px 0px rgba(0,0,0,0.5)", maxWidth: { lg: "30vw", md: "40vw", sm: "80vw", xs: "90vw" } }}>
       <Stack alignItems="center" >
@@ -164,7 +163,7 @@ const SignupView = () => {
             error={errors.password !== undefined}
             helperText={errors.password}
           />
-          <InputLabel htmlFor="upload-photo" style={{ width: "100%", textAlign: "center", color: "white", backgroundColor: "gray", height: "42px", padding: "10px", marginTop: "1rem" }} sx={{ ":hover": { filter: 'brightness(0.6)' } }}>Upload Profile Picture</InputLabel>
+          <InputLabel htmlFor="upload-photo" style={{ width: "100%", textAlign: "center", color: "white", backgroundColor: "gray", height: "42px", padding: "10px", marginTop: "1rem" }} sx={{ ":hover": { filter: 'brightness(0.6)' } }}>{t("Upload Profile Picture")}</InputLabel>
           <TextField
             id="upload-photo"
             itemID="upload-photo"
@@ -178,11 +177,11 @@ const SignupView = () => {
           </TextField>
           <ErrorAlert error={serverError} />
           <Button type="submit" fullWidth variant="contained" sx={{ my: 2, ":hover": { filter: 'brightness(0.6)' }, backgroundColor: "secondary.main" }} disabled={!suck} >
-            Sign Up
+            {t("Sign Up")}
           </Button>
         </Box>
         <Typography color="text.secondary">
-          Already have an account? <Link to="/login">Login</Link>
+          {t("Already have an account?")} <Link to="/login">{t("Login")}</Link>
         </Typography>
       </Stack>
     </Container>

@@ -9,9 +9,11 @@ import { FaUpload } from "react-icons/fa";
 import { imageRecognition } from '../../api/Data'
 import { Avatar } from '@mui/material'
 import Loading from '../Loading'
+import { useTranslation } from 'react-i18next'
 
 
 const ImageRecognition = () => {
+    const {t} = useTranslation();
     const [suck, setSuck] = useState(0);
     const [Image, setImage] = useState("");
     const [file, setFile] = useState("");
@@ -91,17 +93,17 @@ const ImageRecognition = () => {
 
                         }}
 
-                    > <Typography sx={{ fontSize: { lg: "25px", md: "30px", sm: "15px", xs: "15px" }, color: "primary.main", fontWeight: "bold" }}>Please select the image .</Typography>
+                    > <Typography sx={{ fontSize: { lg: "25px", md: "30px", sm: "15px", xs: "15px" }, color: "primary.main", fontWeight: "bold" }}>{t("Please select the image")}</Typography>
                     </Box>}
 
                 </Box>
 
                 <Box className='body' sx={{ flex: { lg: 1, md: 1, sm: 1, xs: 1 }, height: "100%", width: "100%", backgroundColor: "#BCD9B6" }}>
                     <Box sx={{ display: "flex", justifyContent: "center", width: "100%" }}>
-                        <Typography sx={{ fontWeight: "bold", color: "secondary.main", fontSize: { lg: "35px", md: "30px", sm: "25px", xs: "25px" }, borderBottom: 1 }}> Herb Recognition</Typography>
+                        <Typography sx={{ fontWeight: "bold", color: "secondary.main", fontSize: { lg: "35px", md: "30px", sm: "25px", xs: "25px" }, borderBottom: 1 }}>{t("Herb Recognition")}</Typography>
                     </Box>
                     <Stack component={"form"} direction={"row"} onSubmit={handleSubmit} sx={{ height: "30%", width: "100%", display: "flex", justifyContent: "center" }}>
-                        <InputLabel htmlFor="upload-photo" style={{ width: "35%", textAlign: "center", color: "#BCD9B6", backgroundColor: "#2E4450", height: "42px", padding: "20px", marginTop: "1rem" }} sx={{ display: "flex", justifyContent: "center", gap: "0.2rem", alignItems: "center", borderRadius: "5px", ":hover": { filter: 'brightness(0.6)' } }}>Upload Herb</InputLabel>
+                        <InputLabel htmlFor="upload-photo" style={{ width: "35%", textAlign: "center", color: "#BCD9B6", backgroundColor: "#2E4450", height: "42px", padding: "20px", marginTop: "1rem" }} sx={{ display: "flex", justifyContent: "center", gap: "0.2rem", alignItems: "center", borderRadius: "5px", ":hover": { filter: 'brightness(0.6)' } }}>{t("Upload Herb")}</InputLabel>
                         <TextField
                             id="upload-photo"
                             itemID="upload-photo"
@@ -113,7 +115,7 @@ const ImageRecognition = () => {
                         >
                             <Button sx={{ color: "white", width: "30%", height: "30%" }} >Hello</Button>
                         </TextField>
-                        <Button type='submit' variant={"contained"} sx={{ width: "30%", height: "42px", ":hover": { filter: 'brightness(0.6)' }, mt: "1rem", ml: "6px" }} disabled={Load}>Recognize</Button>
+                        <Button type='submit' variant={"contained"} sx={{ width: "30%", height: "42px", ":hover": { filter: 'brightness(0.6)' }, mt: "1rem", ml: "6px" }} disabled={Load}>{t("Recognize")}</Button>
 
 
                     </Stack>

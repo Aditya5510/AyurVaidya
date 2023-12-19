@@ -43,7 +43,7 @@ const featureData = [
 const Features = ({ labela, imgg, bag, col, routes }) => {
     const navigate = useNavigate();
 
-    const { t, i18n } = useTranslation()
+    const { t} = useTranslation()
 
     return (
         <>
@@ -78,14 +78,14 @@ const Features = ({ labela, imgg, bag, col, routes }) => {
 const NewCard = () => {
     const navigate = useNavigate();
 
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
 
     return (
         <Box sx={{ borderRadius: "10px", backgroundColor: "#469C45" }}>
 
             <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "10px", minHeight: "25vh", width: "100%", flexDirection: "column", paddingBottom: "20px" }}>
 
-                <Typography sx={{ width: "100%", fontSize: "30px", flex: 3, padding: { lg: "10px", md: "5px", sm: "5px", xs: "5px", textAlign: "center" } }}>Take a Quiz to know About your body's <strong style={{ color: "white" }}>Prakriti</strong>.</Typography>
+                <Typography sx={{ width: "100%", fontSize: "30px", flex: 3, padding: { lg: "10px", md: "5px", sm: "5px", xs: "5px", textAlign: "center" } }}>{t("Take a Quiz to know About your body's")} <strong style={{ color: "white" }}>{t("Prakriti")}</strong>.</Typography>
                 {/* <Typography sx={{ fontSize: "20px", fontWeight: "bold", flex: 1 }}>Take a Quiz to know About your body's Prakriti</Typography> */}
 
                 <Button variant="contained" onClick={() => navigate('/dosha')} sx={{
@@ -177,7 +177,7 @@ const LandingView = () => {
                             }}
                         >
                             <strong style={{ color: "#F5F5DC" }}>{t('predict')}</strong>{" "}
-                            <strong style={{ color: "#F5F5DC" }}>Connect</strong>{" "}
+                            <strong style={{ color: "#F5F5DC" }}>{t("Connect")}</strong>{" "}
                             <strong>{t('Recognize')}</strong>
                         </Typography>
                         <Typography
@@ -193,7 +193,7 @@ const LandingView = () => {
                                 },
                             }}
                         >
-                            Your Ayurvedic Ecosystem
+       {t("YourAyurvedicEcosystem")}
                         </Typography>
                         <Typography
                             className="content"
@@ -208,7 +208,7 @@ const LandingView = () => {
                                 },
                             }}
                         >
-                            Awaits.
+                            {t("Awaits")}
                         </Typography>
                         <Box sx={{ mt: { lg: "30px", md: "10px", sm: "10px", xs: "10px" }, gap: "10px", display: "flex" }}>
                             {isLoggedIn()?.username ? (
@@ -231,7 +231,7 @@ const LandingView = () => {
                                             },
                                         }}
                                     >
-                                        Explore
+                                        {t("Explore")}
                                     </Button>
                                 </>
                             ) : (
