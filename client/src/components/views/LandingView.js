@@ -13,8 +13,6 @@ import { Grid } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
 
-
-
 const featureData = [
     {
         label: "Recognition of herbs and plants using Machine Learning",
@@ -44,6 +42,9 @@ const featureData = [
 
 const Features = ({ labela, imgg, bag, col, routes }) => {
     const navigate = useNavigate();
+
+    const { t, i18n } = useTranslation()
+
     return (
         <>
             <Box sx={{ border: 1, borderRadius: "10px", backgroundColor: "#469C45" }}>
@@ -60,8 +61,7 @@ const Features = ({ labela, imgg, bag, col, routes }) => {
                             boxShadow: "0px 10px 10px rgba(0, 0, 0.1, 0.1)",
 
                         }
-                    }}>See details</Button>
-
+                    }}>{t('seeDetails')}</Button>
                 </Box>
 
             </Box>
@@ -77,6 +77,8 @@ const Features = ({ labela, imgg, bag, col, routes }) => {
 
 const NewCard = () => {
     const navigate = useNavigate();
+
+    const { t, i18n } = useTranslation();
 
     return (
         <Box sx={{ borderRadius: "10px", backgroundColor: "#469C45" }}>
@@ -99,7 +101,7 @@ const NewCard = () => {
                         boxShadow: "0px 10px 10px rgba(0, 0, 0.1, 0.1)",
 
                     }
-                }}>Take Quiz</Button>
+                }}>{t('takeQuiz')}</Button>
 
             </Box>
 
