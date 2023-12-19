@@ -10,7 +10,7 @@ import { formResponseData } from "./views/Home";
 import { getFormServer } from "../api/Data";
 import { isLoggedIn } from "../helpers/authHelper";
 
-const Card = ({ name, chance, data1 }) => {
+const Card = ({ name, chance, data1, Age, severity, Gender, Symptoms }) => {
   // const handleSubmit = () => { };
   const {
     setLoading1,
@@ -73,7 +73,7 @@ const Card = ({ name, chance, data1 }) => {
         },
       }}
     >
-      <ResultModel finalData={Formulation} raw={data1} name={name} />
+      <ResultModel finalData={Formulation} raw={data1} name={name} Age={Age} Severity={severity} Gender={Gender} Symptoms={Symptoms} />
       <Box>
         <Box
           sx={{
@@ -97,7 +97,7 @@ const Card = ({ name, chance, data1 }) => {
               color: "primary.main",
             }}
           >
-            <strong>Probability </strong>: {(chance * 100).toFixed()}%
+            <strong>Probability </strong>: {(chance * 100).toFixed(2)}%
           </Typography>
         </Box>
       </Box>
@@ -178,7 +178,7 @@ const PredictionResults = ({ data }) => {
             Back
           </Button>
         </Tooltip>
-        <Tooltip title="Download" placement="right">
+        {/* <Tooltip title="Download" placement="right">
           <Button
             sx={{
               color: "black",
@@ -202,13 +202,20 @@ const PredictionResults = ({ data }) => {
           >
             download
           </Button>
-        </Tooltip>
+        </Tooltip> */}
       </Box>
+
+
+
       {[0, 1, 2].map((item) => {
         return (
           <Card
             name={data?.Disease[item]}
             chance={data?.Probability[item]}
+            severity={data?.Severity}
+            Age={data?.Age}
+            Gender={data?.Gender}
+            Symptoms={data?.Symptoms}
             data1={FormDataModel}
           />
         );

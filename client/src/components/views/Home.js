@@ -22,6 +22,7 @@ const Home = () => {
   const [treatmentsData, setTreatmentsData] = useState([]);
   const [Loading1, setLoading1] = useState(false);
   const [x, setx] = useState(true);
+  const [historyResponse, setHistoryResponse] = useState([]);
 
   const [disease, setDisease] = useState({
     Disease: [],
@@ -45,6 +46,8 @@ const Home = () => {
         const data = await fetchUserHistoryData(isLoggedIn());
         if (data?.size) {
           setUserHistoryData(data?.userHistory);
+          setHistoryResponse(data);
+
           // console.log(data?.userHistory);
         }
       } catch (err) {
@@ -80,6 +83,7 @@ const Home = () => {
         setDisease,
         setFormDataModel,
         FormDataModel,
+        historyResponse
       }}
     >
       <Container>
